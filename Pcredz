@@ -582,7 +582,8 @@ def decode_file(fname,res):
     if interface != None:
         try:
             p = pcap.pcapObject()
-            net, mask = pcap.lookupnet(interface)
+            # comment out check for interface ipv4 addr and netmask.  Will then run on interfaces in promisc that may be linked to a mirrored port from a switch, wireless monitor, etc
+            # net, mask = pcap.lookupnet(interface)
             p.open_live(interface, 1600, 0, 100)
             Message = "Pcredz live capture started, using:%s\nStarting timestamp (%s) corresponds to %s"%(interface, time.time(), time.strftime('%x %X'))
             print Message
